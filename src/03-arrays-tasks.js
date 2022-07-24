@@ -8,7 +8,6 @@
  *                                                                                            *
  ******************************************************************************************** */
 
-
 /**
  * Returns an index of the specified element in array or -1 if element is not found
  *
@@ -46,7 +45,6 @@ function generateOdds(len) {
   return resArr;
 }
 
-
 /**
  * Returns the doubled array - elements of the specified array
  * are repeated twice using original order
@@ -62,7 +60,6 @@ function generateOdds(len) {
 function doubleArray(arr) {
   return arr.concat(arr);
 }
-
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -130,7 +127,6 @@ function getUpperCaseStrings(arr) {
   return resArr;
 }
 
-
 /**
  * Returns the array of string lengths from the specified string array.
  *
@@ -175,7 +171,6 @@ function getHead(arr, n) {
   return arr.slice(0, n);
 }
 
-
 /**
  * Returns the n last items of the specified array
  *
@@ -189,7 +184,6 @@ function getHead(arr, n) {
 function getTail(arr, n) {
   return arr.slice(-n);
 }
-
 
 /**
  * Returns CSV representation of two-dimensional numeric array.
@@ -231,7 +225,6 @@ function toArrayOfSquares(arr) {
   return arr.map((el) => el * el);
 }
 
-
 /**
  * Transforms the numeric array to the according moving sum array:
  *     f[n] = x[0] + x[1] + x[2] +...+ x[n]
@@ -249,7 +242,7 @@ function toArrayOfSquares(arr) {
 function getMovingSum(arr) {
   let counter = 0;
   const resultArr = arr.reduce((sum, num) => {
-    sum.push(counter += num);
+    sum.push((counter += num));
     return sum;
   }, []);
   return resultArr;
@@ -269,7 +262,6 @@ function getMovingSum(arr) {
 function getSecondItems(arr) {
   return arr.filter((_, i) => i % 2 !== 0);
 }
-
 
 /**
  * Propagates every item in sequence its position times
@@ -295,7 +287,6 @@ function propagateItemsByPositionIndex(arr) {
   return result.flat();
 }
 
-
 /**
  * Returns the 3 largest numbers from the specified array
  *
@@ -313,7 +304,6 @@ function get3TopItems(arr) {
   const result = arr.sort((a, b) => b - a);
   return result.length > 3 ? result.slice(0, 3) : result;
 }
-
 
 /**
  * Returns the number of positive numbers from specified array
@@ -351,7 +341,18 @@ function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 function sortDigitNamesByNumericOrder(arr) {
-  const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const numbers = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
   return arr.sort((a, b) => numbers.indexOf(a) - numbers.indexOf(b));
 }
 
@@ -428,7 +429,6 @@ function findAllOccurrences(arr, item) {
 function toStringList(arr) {
   return arr.join(',');
 }
-
 
 /**
  * Sorts the specified array by country name first and city name
@@ -578,7 +578,6 @@ function group(array, keySelector, valueSelector) {
   return result;
 }
 
-
 /**
  * Projects each element of the specified array to a sequence
  * and flattens the resulting sequences into one array.
@@ -597,7 +596,6 @@ function selectMany(arr, childrenSelector) {
   return result.flat();
 }
 
-
 /**
  * Returns an element from the multidimensional array by the specified indexes.
  *
@@ -614,7 +612,6 @@ function getElementByIndexes(arr, indexes) {
   const sumIndexes = indexes.reduce((sum, num) => sum + num, 0);
   return arr.flat(Infinity)[sumIndexes];
 }
-
 
 /**
  * Swaps the head and tail of the specified array:
@@ -646,11 +643,10 @@ function swapHeadAndTail(arr) {
     return tail.concat(head);
   }
   head = arr.slice(0, Math.floor(arrLength / 2));
-  tail = arr.slice(-(Math.floor(arrLength / 2)));
-  const centre = arr.slice(Math.floor(arrLength / 2), Math.floor(arrLength / 2) + 1);
+  tail = arr.slice(-Math.floor(arrLength / 2));
+  const centre = arr.slice(Math.floor(arrLength / 2), Math.ceil(arrLength / 2));
   return tail.concat(centre, head);
 }
-
 
 module.exports = {
   findElement,
