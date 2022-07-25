@@ -386,7 +386,7 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
-
+  throw new Error('Not implemented');
 }
 
 
