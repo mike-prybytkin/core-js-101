@@ -327,8 +327,24 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  if (str.length % 2 !== 0) return false;
+
+  const openBrackets = ['[', '(', '{', '<'];
+  const closeBrackets = [']', ')', '}', '>'];
+
+  const stack = [];
+  for (let i = 0; i < str.length; i += 1) {
+    if (openBrackets.includes(str[i])) {
+      stack.push(str[i]);
+    } else {
+      const currEl = stack.pop(str[i]);
+      if (openBrackets.indexOf(currEl) !== closeBrackets.indexOf(str[i])) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
 }
 
 
@@ -370,7 +386,7 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+
 }
 
 
