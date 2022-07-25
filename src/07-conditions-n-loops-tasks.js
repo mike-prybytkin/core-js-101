@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* *************************************************************************************************
  *                                                                                                *
  * Please read the following tutorial before implementing tasks:                                   *
@@ -426,8 +427,47 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  for (let j = 0; j < position.length; j += 1) {
+    position[j].length = 3;
+    for (let i = 0; i < position[j].length; i += 1) {
+      if (position[j][i] === undefined) {
+        position[j][i] = '-';
+      }
+    }
+  }
+  const workArr = position.flat();
+
+  const winnerArray = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  let result = '';
+
+  winnerArray.forEach((_, i) => {
+    if (
+      workArr[winnerArray[i][0]] === 'X'
+      && workArr[winnerArray[i][1]] === 'X'
+      && workArr[winnerArray[i][2]] === 'X'
+    ) {
+      result = 'X';
+    } else if (
+      workArr[winnerArray[i][0]] === '0'
+      && workArr[winnerArray[i][1]] === '0'
+      && workArr[winnerArray[i][2]] === '0'
+    ) {
+      result = '0';
+    }
+  });
+
+  return result || undefined;
 }
 
 
