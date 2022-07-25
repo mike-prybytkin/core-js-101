@@ -333,18 +333,18 @@ function isBracketsBalanced(str) {
   const openBrackets = ['[', '(', '{', '<'];
   const closeBrackets = [']', ')', '}', '>'];
 
-  const stacK = [];
+  const stack = [];
   for (let i = 0; i < str.length; i += 1) {
     if (openBrackets.includes(str[i])) {
-      stacK.push(str[i]);
+      stack.push(str[i]);
     } else {
-      const currEl = stacK.pop(str[i]);
+      const currEl = stack.pop(str[i]);
       if (openBrackets.indexOf(currEl) !== closeBrackets.indexOf(str[i])) {
         return false;
       }
     }
   }
-  return stacK.length === 0;
+  return stack.length === 0;
 }
 
 
