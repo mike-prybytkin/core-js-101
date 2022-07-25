@@ -330,21 +330,21 @@ function getDigitalRoot(num) {
 function isBracketsBalanced(str) {
   if (str.length % 2 !== 0) return false;
 
-  const openBrackets = ['[', '(', '{', '<'];
-  const closeBrackets = [']', ')', '}', '>'];
+  const openBrackets = ['[', '(', '{'];
+  const closeBrackets = [']', ')', '}'];
 
-  const stack = [];
+  const stacK = [];
   for (let i = 0; i < str.length; i += 1) {
     if (openBrackets.includes(str[i])) {
-      stack.push(str[i]);
+      stacK.push(str[i]);
     } else {
-      const currEl = stack.pop(str[i]);
+      const currEl = stacK.pop(str[i]);
       if (openBrackets.indexOf(currEl) !== closeBrackets.indexOf(str[i])) {
         return false;
       }
     }
   }
-  return stack.length === 0;
+  return stacK.length === 0;
 }
 
 
